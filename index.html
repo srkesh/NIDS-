@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NIDS Live Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="dark">
+
+<!-- 🌙 Theme Toggle Button -->
+<button id="themeToggle">🌙 Dark</button>
+
+<h1>🛡️ NIDS – Live Network Intrusion Dashboard</h1>
+
+<!-- ================= Protocol Cards ================= -->
+<div id="protocols" class="card">
+    Loading protocol data...
+</div>
+
+<hr>
+
+<!-- ================= Alerts Table ================= -->
+<h2>🚨 Live Packet Alerts</h2>
+
+<table id="alerts-table" border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Source → Destination</th>
+            <th>Protocol</th>
+            <th>Label</th>
+            <th>Severity</th>
+        </tr>
+    </thead>
+    <tbody id="alerts-body">
+        <tr>
+            <td colspan="5">Waiting for packets...</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ================= Protocol Chart ================= -->
+<h2>📊 Live Protocol Distribution</h2>
+
+<canvas id="protocolChart" width="600" height="300"></canvas>
+
+<!-- Chart.js CDN (MUST be before dashboard.js) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Dashboard Logic -->
+<script src="/static/dashboard.js"></script>
+
+</body>
+</html>
