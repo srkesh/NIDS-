@@ -1,0 +1,60 @@
+/* ===== Base styles ===== */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ===== Dark Theme (default) ===== */
+body.dark {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.dark .card,
+body.dark table {
+    background: #020617;
+    color: #e5e7eb;
+}
+
+/* ===== Light Theme ===== */
+body.light {
+    background: #f8fafc;
+    color: #020617;
+}
+
+body.light .card,
+body.light table {
+    background: #ffffff;
+    color: #020617;
+}
+
+/* ===== Cards ===== */
+.card {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* ===== Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #64748b;
+}
+
+/* ===== Toggle Button ===== */
+#themeToggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
