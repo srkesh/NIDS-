@@ -1,0 +1,7 @@
+# backend/detector.py
+
+def detect_attack(pkt):
+    return {
+        "attack_type": "Normal",
+        "severity": "Low"
+    }
