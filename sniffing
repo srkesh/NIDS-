@@ -1,0 +1,49 @@
+from scapy.all import sniff, IP
+import json
+import os
+import time
+
+DATA_FILE = os.path.join("data", "live_data.json")
+
+os.makedirs("data", exist_ok=True)
+
+def save_packet(packet):
+    try:
+        if IP not in packet:
+            return
+
+        pkt = packet[IP]
+
+        packet_info = {
+            "time": time.strftime("%H:%M:%S"),
+            "src_ip": pkt.src,
+            "dst_ip": pkt.dst,
+            "protocol": pkt.proto
+        }
+
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, "r") as f:
+                data = json.load(f)
+        else:
+            data = []
+
+        data.append(packet_info)
+
+        # keep last 500 packets only
+        data = data[-500:]
+
+        with open(DATA_FILE, "w") as f:
+            json.dump(data, f)
+
+        print("[PACKET]", packet_info)
+
+    except Exception as e:
+        # NEVER crash sniffer
+        print("[ERROR IGNORED]", e)
+
+def start():
+    print("🟢 Sniffer running continuously...")
+    sniff(prn=save_packet, store=False)
+
+if __name__ == "__main__":
+    start()
